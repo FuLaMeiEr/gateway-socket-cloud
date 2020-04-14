@@ -1,0 +1,14 @@
+server:
+  port: 8089
+
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: websocket-server
+          uri: lb:ws://websocket-server
+          predicates:
+            - Path=/ws/**
+          filters:
+            - StripPrefix=1
